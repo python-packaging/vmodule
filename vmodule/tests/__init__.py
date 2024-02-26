@@ -1,5 +1,5 @@
-# from .foo import FooTest
+from .core import CoreTest
 
 __all__ = [
-    # "FooTest",
+    "CoreTest",
 ]
