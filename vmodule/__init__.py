@@ -47,14 +47,14 @@ def vmodule_init(
         LOG.log(VLOG_1, "Parse vmodule: %r", vmodule)
         for item in vmodule.split(","):
             LOG.log(VLOG_2, "Item: %r", item)
-            k, _, v = item.partition("=")
+            k, _, vv = item.partition("=")
 
             # N.b. getLogger takes no args other than the dotted name, and
             # logging.PlaceHolder is both not public and doesn't keep track of
             # the desired level.  This must work regardless of whether the
             # normal use has actually called getLogger yet, which is a big
             # reason why we don't have a custom Logger class.
-            logging.getLogger(k).setLevel(logging.INFO - int(v))
+            logging.getLogger(k).setLevel(logging.INFO - int(vv))
 
 
 __all__ = [

@@ -9,7 +9,7 @@ LOG_LINE_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3} 
 LOG_LINE_NUMERIC_LINE_RE = re.compile(r"^([A-Z0-9_]+\s+[a-z_.]+:)\d+(?= )", re.M)
 
 
-def log_some_messages():
+def log_some_messages() -> None:
     logging.getLogger("a.b.c").warning("Warn")
     logging.getLogger("a.b.c").info("Info")
     logging.getLogger("a.b.c").debug("Debug")
@@ -18,7 +18,7 @@ def log_some_messages():
 
 
 class CoreTest(unittest.TestCase):
-    def test_defaults(self):
+    def test_defaults(self) -> None:
         # let basicConfig do its work
         del logging.root.handlers[:]
         # clear out anything that might have leaked in from another test
@@ -38,7 +38,7 @@ WARNING  a.b.c:<n> Warn
             output,
         )
 
-    def test_root_verbosity_zero_is_info(self):
+    def test_root_verbosity_zero_is_info(self) -> None:
         # let basicConfig do its work
         del logging.root.handlers[:]
         # clear out anything that might have leaked in from another test
@@ -59,7 +59,7 @@ INFO     a.b.c:<n> Info
             output,
         )
 
-    def test_root_verbosity(self):
+    def test_root_verbosity(self) -> None:
         # let basicConfig do its work
         del logging.root.handlers[:]
         # clear out anything that might have leaked in from another test
@@ -81,7 +81,7 @@ VLOG_1   x.y.z:<n> Vlog 1
             output,
         )
 
-    def test_vmodule_verbosity(self):
+    def test_vmodule_verbosity(self) -> None:
         # let basicConfig do its work
         del logging.root.handlers[:]
         # clear out anything that might have leaked in from another test
@@ -102,7 +102,7 @@ VLOG_1   x.y.z:<n> Vlog 1
             output,
         )
 
-    def test_debug_is_ten(self):
+    def test_debug_is_ten(self) -> None:
         # let basicConfig do its work
         del logging.root.handlers[:]
         # clear out anything that might have leaked in from another test
